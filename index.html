@@ -11,50 +11,46 @@
     <meta name="google-site-verification" content="EYEnXqToOBjWIrFY6YHVXYINjst4QLpuzIpnjjNoaVk" />
     
     <style>
-    /* Turns the container into a flexible layout */
-    .paper-item {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem; /* Ensures the button and all links are perfectly equidistant */
+    /* Keeps the button and links inline */
+    .paper-links {
+        margin-bottom: 10px;
     }
 
+    /* Adds the exact spacing seen in your friend's screenshot */
+    .paper-links a {
+        margin-left: 15px; 
+    }
+
+    /* Styles the button to look like a standard web link */
     .collapsible {
-      background-color: transparent; /* Stripped background to match links */
-      color: #3d9ece; 
-      cursor: pointer;
-      padding: 0;      /* Removed 10px padding so it aligns perfectly left */
-      margin: 0;
-      width: auto;     /* Removed 30% width so it doesn't push links away */
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-      order: 1;        /* Keeps the button first in the visual line */
+        background-color: transparent;
+        color: #39c; /* Matches your global link color */
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        font-family: inherit; /* Matches your site's font */
     }
 
-    .active, .collapsible:hover {
-      background-color: transparent;
-      text-decoration: underline; /* Added hover effect to mimic links */
+    .collapsible:hover, .collapsible.active {
+        color: #069;
+        text-decoration: underline;
     }
 
-    /* Pulls all the anchor links up into the second visual position */
-    .paper-item a {
-      order: 2; 
-    }
-
+    /* The smooth sliding animation container */
     .content {
-      padding: 0; /* Removed horizontal padding to stay flush left */
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.2s ease-out;
-      background-color: white;
-      order: 3; /* Visually forces the text block to render below the links */
-      flex-basis: 100%; /* Forces the text to take up the full width below */
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out; /* The slide effect */
     }
 
     .content p {
-      margin: 15px 0 5px 0; /* Adds top margin so it doesn't crowd the links above */
+        margin: 5px 0 15px 0;
+        color: #595959; 
     }
 </style>
     
@@ -119,15 +115,15 @@
         <b>Private Capital Markets and Inequality</b> - Under Review <br>
         <i>with <a href="https://sites.google.com/view/claramartinez-toledanotoledano" target="_blank">Clara Mart&iacute;nez-Toledano</a> (Imperial) 
            and <a href="https://www.vrindamittal.com" target="_blank">Vrinda Mittal</a> (UNC-Chapel Hill)</i> <br>
-        <div class="paper-item">
+       <div class="paper-links">
           <button class="collapsible">Abstract</button>
-          <div class="content">
-              <p>This paper examines how expanding private capital markets contribute to rising economic inequalities in the U.S. We show that the share of early-stage financing raised from U.S. high-net-worth individuals tripled from 2004 to 2022. Exploiting the expansion of the QSBS tax exclusion, we find that HNWIs’ investments made startups 5.6% more likely to stay private. Counterfactual simulations reveal that HNWIs’ excess returns on early-stage investments explain 26% of the growth in the top 0.5% wealth share over 2010-2022. Finally, investor entry increased incumbents’ returns and encouraged further investments, generating a self-reinforcing feedback loop between private capital market growth and inequality.</p>
-          </div>
           <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5166981" target="_blank">Draft</a>
           <a href="https://www.stone-econ.org/research/private-capital-markets-and-inequality" target="_blank">Summary</a>
           <a href="https://cepr.org/voxeu/columns/private-capital-markets-and-inequality" target="_blank">VoxEU</a>
-        </div>
+      </div>
+      <div class="content">
+          <p>This paper examines how expanding private capital markets contribute to rising economic inequalities in the U.S. We show that the share of early-stage financing raised from U.S. high-net-worth individuals tripled from 2004 to 2022. Exploiting the expansion of the QSBS tax exclusion, we find that HNWIs’ investments made startups 5.6% more likely to stay private. Counterfactual simulations reveal that HNWIs’ excess returns on early-stage investments explain 26% of the growth in the top 0.5% wealth share over 2010-2022. Finally, investor entry increased incumbents’ returns and encouraged further investments, generating a self-reinforcing feedback loop between private capital market growth and inequality.</p>
+      </div>
         <div style="margin-top: 8px; margin-bottom: 8px;">
             Presented at the <a href="https://www.nber.org/conferences/si-2025-household-finance" target ="_blank">NBER Summer Institute 2025 Household Finance</a> and the <a href="https://www.nber.org/conferences/public-economics-program-meeting-fall-2025" target ="_blank">NBER Public Economics Program Meeting Fall 2025</a>.
         </div>
@@ -190,7 +186,10 @@ var i;
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
+    
+    // Steps out of the link group to find the content div below
+    var content = this.parentElement.nextElementSibling;
+    
     if (content.style.maxHeight){
       content.style.maxHeight = null;
     } else {
