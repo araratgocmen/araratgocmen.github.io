@@ -268,38 +268,3 @@ footer {
     color:#444;
   }
 }
-
-/* --- Collapsible Button Group --- */
-
-.button-group {
-    display: flex;
-    justify-content: flex-start; 
-    gap: 1.5rem;         /* Space between the links */
-    align-items: center; 
-    margin: 0 0 20px;    /* Matches the 20px bottom margin of your paragraphs */
-}
-
-/* Make the button look exactly like your global anchor links */
-button.collapsible {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;       /* Inherits your specific system fonts */
-    color: #39c;         /* Matches your global 'a' color */
-    cursor: pointer;
-}
-
-/* Matches your global 'a:hover' behavior */
-button.collapsible:hover {
-    color: #069;         
-}
-
-/* Optional: Hide content by default if you are using a JS toggle */
-.content {
-    display: none; 
-}
-
-/* Class to toggle via JavaScript to show the text */
-.content.active {
-    display: block;
-}
