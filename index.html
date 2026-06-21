@@ -11,20 +11,19 @@
     <meta name="google-site-verification" content="EYEnXqToOBjWIrFY6YHVXYINjst4QLpuzIpnjjNoaVk" />
     
     <style>
-    /* Keeps the button and links inline */
+    /* Added margin-top to create space between the paper title and the buttons */
     .paper-links {
-        margin-bottom: 10px;
+        margin-top: 15px; 
+        margin-bottom: 15px;
     }
 
-    /* Adds the exact spacing seen in your friend's screenshot */
     .paper-links a {
         margin-left: 15px; 
     }
 
-    /* Styles the button to look like a standard web link */
     .collapsible {
         background-color: transparent;
-        color: #39c; /* Matches your global link color */
+        color: #39c;
         cursor: pointer;
         padding: 0;
         margin: 0;
@@ -32,7 +31,7 @@
         text-align: left;
         outline: none;
         font-size: 15px;
-        font-family: inherit; /* Matches your site's font */
+        font-family: inherit;
     }
 
     .collapsible:hover, .collapsible.active {
@@ -40,12 +39,11 @@
         text-decoration: underline;
     }
 
-    /* The smooth sliding animation container */
     .content {
         padding: 0;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.2s ease-out; /* The slide effect */
+        transition: max-height 0.2s ease-out;
     }
 
     .content p {
@@ -179,7 +177,7 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    <script>
+<script>
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -187,17 +185,19 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     
-    // Steps out of the link group to find the content div below
+    // This looks for the next element after the parent div
     var content = this.parentElement.nextElementSibling;
     
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
+    // Safety check: ensure content exists
+    if (content) {
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+    }
   });
 }
-      
 </script>
   </body>
 </html>
