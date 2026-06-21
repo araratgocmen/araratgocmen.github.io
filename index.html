@@ -11,50 +11,37 @@
     <meta name="google-site-verification" content="EYEnXqToOBjWIrFY6YHVXYINjst4QLpuzIpnjjNoaVk" />
     
    <style>
-    /* Container for the button and links */
-    .paper-links {
-        margin-top: 15px; 
-        margin-bottom: 10px;
-        display: flex;       /* This ensures they stay in a line */
-        align-items: center; /* This keeps them vertically centered */
-        gap: 15px;           /* This creates identical spacing between every item */
-    }
-
-    /* Target the button AND the links */
-    .paper-links button, .paper-links a {
-        margin: 0;           /* Remove manual margins so gap handles everything */
-        padding: 0;
-        font-family: inherit; /* Matches your site's font */
-        font-size: 15px;
-        text-decoration: none;
-    }
-
     .collapsible {
-        background-color: transparent;
-        color: #39c;
-        cursor: pointer;
-        border: none;
-        text-align: left;
-        outline: none;
+      background-color: #FFFFFF;
+      color: #3d9ece; 
+      cursor: pointer;
+      padding: 10px;
+      margin: 0;
+      width: 30%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
     }
 
-    .collapsible:hover, .collapsible.active {
-        color: #069;
-        text-decoration: underline;
+    .active, .collapsible:hover {
+      background-color: #FFFFFF;
     }
 
     .content {
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
+      padding: 0 10px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: white;
+    }
+    .content p {
+        margin: 5px 0;
     }
 
-    .content p {
-        margin: 5px 0 15px 0;
-        color: #595959; 
-    }
-</style>
+
+
+    </style>
     
   </head>
   <!-- Google tag (gtag.js) -->
