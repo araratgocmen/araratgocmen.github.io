@@ -10,28 +10,32 @@
     <meta name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="EYEnXqToOBjWIrFY6YHVXYINjst4QLpuzIpnjjNoaVk" />
     
-    <style>
-    /* Added margin-top to create space between the paper title and the buttons */
+   <style>
+    /* Container for the button and links */
     .paper-links {
         margin-top: 15px; 
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        display: flex;       /* This ensures they stay in a line */
+        align-items: center; /* This keeps them vertically centered */
+        gap: 15px;           /* This creates identical spacing between every item */
     }
 
-    .paper-links a {
-        margin-left: 15px; 
+    /* Target the button AND the links */
+    .paper-links button, .paper-links a {
+        margin: 0;           /* Remove manual margins so gap handles everything */
+        padding: 0;
+        font-family: inherit; /* Matches your site's font */
+        font-size: 15px;
+        text-decoration: none;
     }
 
     .collapsible {
         background-color: transparent;
         color: #39c;
         cursor: pointer;
-        padding: 0;
-        margin: 0;
         border: none;
         text-align: left;
         outline: none;
-        font-size: 15px;
-        font-family: inherit;
     }
 
     .collapsible:hover, .collapsible.active {
@@ -114,15 +118,16 @@
         <i>with <a href="https://sites.google.com/view/claramartinez-toledanotoledano" target="_blank">Clara Mart&iacute;nez-Toledano</a> (Imperial) 
            and <a href="https://www.vrindamittal.com" target="_blank">Vrinda Mittal</a> (UNC-Chapel Hill)</i> <br>
         
-        <div class="paper-links" style="margin-top: 15px; margin-bottom: 15px;">
-            <button class="collapsible">Abstract</button>
-            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5166981" target="_blank">Draft</a>
-            <a href="https://www.stone-econ.org/research/private-capital-markets-and-inequality" target="_blank">Summary</a>
-            <a href="https://cepr.org/voxeu/columns/private-capital-markets-and-inequality" target="_blank">VoxEU</a>
-        </div>
-        
-        <div id="abstract-content" class="content">
-            <p>This paper examines how expanding private capital markets contribute to rising economic inequalities in the U.S. We show that the share of early-stage financing raised from U.S. high-net-worth individuals tripled from 2004 to 2022. Exploiting the expansion of the QSBS tax exclusion, we find that HNWIs’ investments made startups 5.6% more likely to stay private. Counterfactual simulations reveal that HNWIs’ excess returns on early-stage investments explain 26% of the growth in the top 0.5% wealth share over 2010-2022. Finally, investor entry increased incumbents’ returns and encouraged further investments, generating a self-reinforcing feedback loop between private capital market growth and inequality.</p>
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5166981" target ="_blank">Draft</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="https://www.stone-econ.org/research/private-capital-markets-and-inequality" target ="_blank">Summary</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="https://cepr.org/voxeu/columns/private-capital-markets-and-inequality" target ="_blank">VoxEU</a>
+        &nbsp;&nbsp;&nbsp;
+        <button class="collapsible">Abstract</button>
+        <div class="content">
+        <p>This paper examines how expanding private capital markets contribute to rising economic inequalities in the U.S. We show that the share of early-stage financing raised from U.S. high-net-worth individuals tripled from 2004 to 2022. Exploiting the expansion of the QSBS tax exclusion, we find that HNWIs’ investments made startups 5.6% more likely to stay private. Counterfactual simulations reveal that HNWIs’ excess returns on early-stage investments explain 26% of the growth in the top 0.5% wealth share over 2010-2022. Finally, investor entry increased incumbents’ returns and encouraged further investments, generating a self-reinforcing feedback loop between private capital market growth and inequality.
+        </p>
         </div>
         
         <div style="margin-top: 8px; margin-bottom: 8px;">
@@ -181,18 +186,21 @@
     </div>
     <script src="javascripts/scale.fix.js"></script>
 <script>
-document.querySelectorAll('.collapsible').forEach(button => {
-  button.addEventListener('click', function() {
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var content = document.getElementById("abstract-content");
-    
-    if (content.style.maxHeight) {
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
       content.style.maxHeight = null;
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
-    }
+    } 
   });
-});
+}
+
 </script>
   </body>
 </html>
